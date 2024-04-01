@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="textViewPersonalInformation" type="id" />
+    <item name="editTextEmail" type="id" />
+    <item name="textViewResetPassword" type="id" />
+    <item name="editTextCurrentPassword" type="id" />
+    <item name="editTextNewPassword" type="id" />
+    <item name="buttonCancel" type="id" />
+    <item name="buttonSave" type="id" />
+</resources>
