@@ -1,47 +1,67 @@
-package com.example.scoup;
-
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.scoup.R;
+import com.google.android.material.textfield.TextInputEditText;
+
 public class MainActivity extends AppCompatActivity {
+
+    private TextInputEditText editTextUsername;
+    private TextInputEditText editTextEmail;
+    private TextInputEditText editTextCurrentPassword;
+    private TextInputEditText editTextNewPassword;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_profile);
+        setContentView(R.layout.activity_account_info);
 
-
-        EditText editTextCurrentPassword = findViewById(R.id.editTextCurrentPassword);
-        EditText editTextNewPassword = findViewById(R.id.editTextNewPassword);
+        // Initialize views
+        editTextUsername = findViewById(R.id.editTextUsername);
+        editTextEmail = findViewById(R.id.editTextEmail);
+        editTextCurrentPassword = findViewById(R.id.editTextCurrentPassword);
+        editTextNewPassword = findViewById(R.id.editTextNewPassword);
         Button buttonCancel = findViewById(R.id.buttonCancel);
         Button buttonSave = findViewById(R.id.buttonSave);
 
-
-        buttonSave.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                String newPassword = editTextNewPassword.getText().toString();
-
-                Toast.makeText(MainActivity.this, "Password changed successfully!", Toast.LENGTH_SHORT).show();
-            }
-        });
-
-
+        // Action for Cancel button
         buttonCancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                editTextCurrentPassword.setText("");
-                editTextNewPassword.setText("");
-
+                // Clear input fields
+                clearFields();
+                // Show a toast message
                 Toast.makeText(MainActivity.this, "Changes canceled!", Toast.LENGTH_SHORT).show();
             }
         });
+
+        // Action for Save button
+        buttonSave.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Get current and new passwords
+                String currentPassword = editTextCurrentPassword.getText().toString();
+                String newPassword = editTextNewPassword.getText().toString();
+
+                // Save changes to username and email
+                String newUsername = editTextUsername.getText().toString();
+                String newEmail = editTextEmail.getText().toString();
+
+                // Process saving password and other information (not implemented in this example)
+                // Show a toast message
+                Toast.makeText(MainActivity.this, "Changes saved successfully!", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    private void clearFields() {
+        editTextUsername.setText("");
+        editTextEmail.setText("");
+        editTextCurrentPassword.setText("");
+        editTextNewPassword.setText("");
     }
 }
